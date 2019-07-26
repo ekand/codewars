@@ -31,17 +31,21 @@ def wave(str):
         for j in range(len(str)):
             #print('i', i, 'j', j)
             character = str[j]
-            if i == j:
-                print(character.capitalize())
+            if character == ' ':
+                pass
+            
+            elif i == j:
+                #print(character.capitalize())
                 #print(character.capitalize())
 
                 #print('test 1')
                 string = string + character.capitalize()
                 #print(string)
             else:
-                print(character)
+                #print(character)
                 string = string + character
-        output.append(string)
+        if character != ' ':
+          output.append(string)
     return output
 
-wave(str)
+print(wave(str))
