@@ -25,27 +25,17 @@ str = " gap "
 
 
 def wave(str):
-    output = []
-    for i in range(len(str)):
-        string = ''
-        for j in range(len(str)):
-            #print('i', i, 'j', j)
-            character = str[j]
-            if character == ' ':
-                pass
-            
-            elif i == j:
-                #print(character.capitalize())
-                #print(character.capitalize())
+  output = []
+  for i in range(len(str)):
+    string = ''
 
-                #print('test 1')
-                string = string + character.capitalize()
-                #print(string)
-            else:
-                #print(character)
-                string = string + character
-        if character != ' ':
-          output.append(string)
-    return output
-
+    if str[i] != ' ':
+      for j in range(len(str)):
+        if i == j:
+          string = string + str[j].capitalize()
+        else:
+          string = string + str[j]
+      print(string)  
+      output.append(string)
+  return output
 print(wave(str))
