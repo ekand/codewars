@@ -28,14 +28,17 @@ def wave(str):
   output = []
   for i in range(len(str)):
     string = ''
-
     if str[i] != ' ':
       for j in range(len(str)):
         if i == j:
           string = string + str[j].capitalize()
         else:
           string = string + str[j]
-      print(string)  
       output.append(string)
   return output
+
+
+
 print(wave(str))
+
+# it works and passede the tests
