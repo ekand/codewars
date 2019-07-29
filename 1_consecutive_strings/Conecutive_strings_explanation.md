@@ -35,7 +35,9 @@ for i in range(len(strarr) - k + 1):
         if len(combined_string) > len(longest_combined_string):
             longest_combined_string = combined_string
 ```
-The first step is to initialize `longest_combined_string` as an empty string (`''`). Then we loop i from zero up to `len(strarr) - k + 1`. The reason for `- k` is that we will be looking at `k` number or strings at a time, so we need want to stop at the index of `i` that will give us a collection of `k` strings, starting at `i`. The `- 1` is there because slice is exclusive at the ending index.
+The first step is to initialize `longest_combined_string` as an empty string (`''`). Then we loop `i` from zero up to `len(strarr) - k + 1`. The reason for `- k` is that we will be looking at `k` number or strings at a time, so we need want to stop at the index of `i` that will give us a collection of `k` strings, starting at `i`. The `- 1` is there because slice is exclusive at the ending index.
+
+... (under construction)...
 
 
 
