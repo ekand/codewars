@@ -4,7 +4,8 @@ Created on Wed Jul 31 07:58:27 2019
 
 @author: user2
 """
-# on the second attempt, using some math tricks, it works!
+# on the second attempt, using some math tricks, it works
+# but only for some of the 'attempt' cases on codewars 
 
 
 def find_nb(m):
