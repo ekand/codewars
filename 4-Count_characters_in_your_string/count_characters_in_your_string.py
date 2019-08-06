@@ -1,3 +1,8 @@
+'''A solution to the kata challenge found here
+https://www.codewars.com/kata/52efefcbcdf57161d4000091/train/python
+'''
+
+
 def count(string):
     #initialize empty dictionary
     d = {}
