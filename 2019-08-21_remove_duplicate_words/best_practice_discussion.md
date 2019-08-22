@@ -71,4 +71,6 @@ So now it should be clear why a dictionary was the correct choice, even though s
 
 So there you have it: One line to do what took me six. Although my function had more documentation, so I give myself points there.
 
+By the way, the code and a copy of this description are on my repo [here](https://github.com/erik-kristofer-anderson/Codewars/tree/master/2019-08-21_remove_duplicate_words).
+
 I'm looking forward to showing you the next one!
