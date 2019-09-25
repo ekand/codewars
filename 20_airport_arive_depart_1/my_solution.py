@@ -1,36 +1,37 @@
+# kata found here
+# https://www.codewars.com/kata/airport-arrivals-slash-departures-number-1/train/python
+
+
+
+
 def flap_display(lines, rotors):
-    output = lines
-    print("lines", lines)
-    print("rotors", rotors)
     chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ?!@#&()|<>.:=-+*/0123456789"
-    chars_length = len(chars)
-    display_list = list(lines[0])
-    print("starting display list: ", display_list)
+    output = []
+    if lines == [None]:
+        return [None]
 
     def next_character(char):
         i = chars.find(char)
-        i = (i+1) % chars_length
+        i = (i+1) % len(chars)
         return chars[i]
 
-    for k, turns in enumerate(rotors[0]):
-        # print(k, turns)
-        for turn in range(turns):
-            # print("turn", turn)
-            for j, char in enumerate(display_list):
-                #print(j, char)
-                if j >= k:
-                    #for _ in range(1):
+    def turn_rotors(line, rotor_codes):
+        line_list = list(line)
+        for k, turns in enumerate(rotor_codes):
+            for turn in range(turns):
+                for j, char in enumerate(line_list):
+                    if j >= k:
+                        char = next_character(char)
+                        line_list[j] = char
+        output = "".join(line_list)
+        return output
 
-                        #print(_)
-                    char = next_character(char)
-                    display_list[j] = char
-                    # print(range(turn+1))
-                    # print(display_list)
-
-
-            output = "".join(display_list)
-
-
-    return [output]
-
+    for m in range(len(lines)):
+        print(lines[m], rotors[m])
+        output.append(turn_rotors(lines[m], rotors[m]))
         
+    return output
+
+lines = ['CAT']
+rotors = [[1, 13, 27]]
+print(flap_display(lines, rotors))
