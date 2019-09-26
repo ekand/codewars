@@ -1,9 +1,6 @@
 # kata found here
 # https://www.codewars.com/kata/airport-arrivals-slash-departures-number-1/train/python
 
-
-
-
 def flap_display(lines, rotors):
     chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ?!@#&()|<>.:=-+*/0123456789"
     output = []
@@ -29,7 +26,7 @@ def flap_display(lines, rotors):
     for m in range(len(lines)):
         print(lines[m], rotors[m])
         output.append(turn_rotors(lines[m], rotors[m]))
-        
+
     return output
 
 lines = ['CAT']
