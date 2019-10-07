@@ -16,9 +16,7 @@ class Boat:
         self.status = status
 
 
-    def __str__(self):
-        s = "Boat id: " + self.id + ", Pieces: " + str(self.pieces) + ", status: " + self.status
-        return s
+a
 
 
 
