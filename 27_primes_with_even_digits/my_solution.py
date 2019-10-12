@@ -1,28 +1,46 @@
 # solution to kata found here:
 # https://www.codewars.com/kata/582dcda401f9ccb4f0000025/train/python
 
-def get_primes(n):
-    t = range(2, n)
-    p = 2
-    d = {}
-    while True:
-        while p in d:
-            p += 1
-        i = 2
-        while i * p < n:
-            d[i*p] = 0 # 0 for not prime
-            i += 1
-        p += 1
-        if p >= n:
-            break
-    primes = []
-    for number in t:
-        if number not in d:
-            primes.append(number)
-    return primes
+""" new approach: start at x =  n - 1.
+set max_even_digits = 0
+if x is prime: count even digits.
+    if even_digits greater than max_even_digits:
+        set max_even_digits = even_digits
+        result = x
+increment x down by one and repeat from `set max_even_digits = 0`
+continue until length of x (digits) less than or equal to max_even_digits + 1
+(if we have i digits, we can have at most i-1 even digits.)
+(so if we have k even digits, we can have no less than k+1 digits)
+( )
+"""
+def f(n):
+    x = n - 1
+    starting = True
+    max_even_digits = 0
+    while starting or (not len(str(x)) <= (max_even_digits+1)):
+        if is_prime(x):
+            even_digits = count_even_digits(x)
+            if even_digits > max_even_digits:
+                max_even_digits = even_digits
+                result = x
+                starting = False
+        x -= 1
+    return(result)
 
-def count_evens(prime):
-    t = list(str(prime))
+
+def is_prime(x):
+    if x == 1:
+        return False
+    else:
+        for i in range(2, x//2):
+            if (x % i) == 0:
+                return False
+        return True
+
+
+
+def count_even_digits(x):
+    t = list(str(x))
     count = 0
     for digit in t:
         for num_str in (['0', '2', '4', '6', '8']):
@@ -31,14 +49,5 @@ def count_evens(prime):
     return count
 
 
-def f(n):
-    print(n)
-    primes = get_primes(n)
-    max_evens = 0
-    for prime in primes:
-        evens = count_evens(prime)
-        if evens >= max_evens:
-            max_evens = evens
-            result = prime
-    print(result)
-    return result
+
+print(f(1000))
