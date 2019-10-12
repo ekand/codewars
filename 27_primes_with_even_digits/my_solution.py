@@ -18,6 +18,7 @@ def f(n):
     starting = True
     max_even_digits = 0
     while starting or (not len(str(x)) <= (max_even_digits+1)):
+        #print(x)
         if is_prime(x):
             even_digits = count_even_digits(x)
             if even_digits > max_even_digits:
@@ -50,4 +51,4 @@ def count_even_digits(x):
 
 
 
-print(f(1000))
+print(f(691510))
