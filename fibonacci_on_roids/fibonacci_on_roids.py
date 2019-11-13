@@ -16,7 +16,7 @@ def add_stuff(arr,inds):
     next_num = 0
     for ind in inds:
 
-        next_num += arr[-ind]
+        next_num += arr[ind]
     return next_num
 #a = add_stuff([1,1],[0,1])
 # a = add_stuff([1,1],[0,1])
@@ -25,11 +25,13 @@ def add_stuff(arr,inds):
 # a = add_stuff([1,1],[0,1])
 # print(a)
 
-print(custom_fib([1,1],[0,1],3))
-print(custom_fib([3,5,2],[0,1,2],4))
-print(custom_fib([7,3,4,1],[1,1],6))
+print(custom_fib([1,1],[0,1],3)) # 3
+print(custom_fib([3,5,2],[0,1,2],4)) # 17
+print(custom_fib([7,3,4,1],[1,1],6)) # 2
+print(custom_fib([3, 0, 9, 7, 7], [4, 1, 2], 1)) #0
 
-print(custom_fib([1, 4, 8, 4], [1, 3, 1, 1], 15))
+
+# print(custom_fib([1, 4, 8, 4], [1, 3, 1, 1], 15))
 
 
 # https://www.codewars.com/kata/5d96030e4a3366001d24b3b7
@@ -40,5 +42,3 @@ print(custom_fib([1, 4, 8, 4], [1, 3, 1, 1], 15))
 #     while len(values) <= n:
 #         values.append(sum(values[-l:][i] for i in indexes))
 #     return values[n]
-
-
