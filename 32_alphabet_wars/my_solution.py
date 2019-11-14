@@ -1,67 +1,83 @@
-# good start
+# start fresh
 
-class Shelter:
-    """ represents a nuclear shelter
+"""
+tasks:
+identify letters outside of shelters
+identify whether any bombs have landed
+if no bombs landed, outside letters survive
 
-    Attributes:
-    hits: string. how many times a bomb has landed near the shelter
-    letters: list of strings: the letters in the shelter
-    """
-    def __init__(self, letters = None, hits = 0):
-        if letters == None:
-            self.letters = []
-        else:
-            self.letters = letters
-        self.hits = hits
+identify letters in shelters
+identify which shelters remain intact
+letters in intact shelters survive
+"""
 
-    def __str__(self):
-        s = "shelter containing " + str(self.letters) + " with " + str(self.hits) + " hits."
-        return s
 
 def alphabet_war(battlefield):
-    safe_letters = []
+    b = list(battlefield)
+    in_shelter = False;
+    any_bombs = False;
+    survivors = []
     letters_outside = []
-    in_shelter = False
-    any_bombs = False
-    t = list(battlefield)
-    shelters = []
-    # print(t)
-    for character in t:
-        if in_shelter == True:
-            if character.isalpha():
-                shelters[-1].letters.extend(character)
-            elif character == ']':
-                in_shelter == False;
-        elif character == '[':
-            shelter = Shelter()
-            shelters.append(shelter)
-            in_shelter = True
-        elif character.isalpha():
+    for character in b: # find outside letters
+        if not in_shelter and character.isalpha():
             letters_outside.append(character)
-        elif character == '#':
-            any_bombs = True;
-    bomb_counter = 0
-    # for character in t:
-    #     if character == '#':
-    #         bomb_counter += 1
-    #     if character == '[':
-    #         shelter.hits += bomb_counter
-    #         bomb_counter = 0
+        if character == "[":
+            in_shelter = True
+        if character == "]":
+            in_shelter = False
+        if character =="#":
+            any_bombs = True
+    if not any_bombs:
+        survivors.extend(letters_outside)
+
+    shelter_counter = 0
+    shelters = []
+    for character in b:
+        if character == "[":
+
+            in_shelter = True
+            shelters.append([])
+        elif character == "]":
+            in_shelter = False
+            shelter_counter+=1
+        elif in_shelter:
+            shelters[shelter_counter].append(character);
+    #print(shelters)
 
 
-    # construct answer
-    res = ""
-    # for shelter in shelters:
-    #     if shelter.hits < 2:
-            # res += str(shelter.letters)
-    if any_bombs == False:
-        res += str(letters_outside)
+    for current_shelter_i, shelter in enumerate(shelters):
+        #print(current_shelter_i, "Current shelter number")
+        letters_in_this_shelter = []
+        shelter_counter = 0;
+        in_shelter = False
+        bombs_next_to_shelter = 0
+        #print("for character in b:")
+        for character in b:
+            #print("character", character)
+            if character == "#" and (shelter_counter == current_shelter_i or shelter_counter == current_shelter_i + 1):
+                bombs_next_to_shelter += 1
+                #print('bombs_next_to_shelter', bombs_next_to_shelter)
+            elif character == "[":
+                in_shelter = True
 
-    res = sorted(res)
+            elif in_shelter and shelter_counter == current_shelter_i and character.isalpha():
+                letters_in_this_shelter.append(character)
+            elif character == "]":
+                shelter_counter += 1
+                in_shelter = False
+            #print(letters_in_this_shelter)
+        #print(bombs_next_to_shelter, "bombs")
+        if bombs_next_to_shelter < 2:
+            survivors.extend(letters_in_this_shelter)
+    #print("survivors", survivors)
+    survive.sort()
+    return "".join(survivors)
 
-    return res
 
 
 
-battlefield = '[a]#[b]#[c]'
+
+
+#battlefield = "abde[fgh]ijk"
+battlefield = "##abde[fgh]ijk[mn]op"
 print(alphabet_war(battlefield))
