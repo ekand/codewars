@@ -5,7 +5,7 @@ def ride_of_fortune(artifact, explorers):
     artifact_object = Artifact(artifact)
     results = []
     for explorer in explorers:
-        exp = Explorer(x=0, y=explorer)
+        exp = Explorer(x=-1, y=explorer)
         while not exp.exited:
             exp.move()
             exp.evaluate(artifact_object)
